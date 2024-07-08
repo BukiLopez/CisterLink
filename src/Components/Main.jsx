@@ -1,17 +1,17 @@
-// src/Main.js
+// src/Components/Main.js
 import React from 'react';
 import './Main.css';
 import tinaco from './img/Tinaco.png';
 import ph from './img/ph.png';
 import turbidez from './img/turbidez.png';
-
+import { Link } from 'react-router-dom';
 
 const Card = ({ image, title }) => {
   return (
-    <div className="card">
+    <Link to={`/${title.toLowerCase()}`} className="card">
       <img src={image} alt={title} className="card-image" />
       <h2 className="card-title">{title}</h2>
-    </div>
+    </Link>
   );
 };
 
