@@ -5,23 +5,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import Main from './Components/Main';
-import Tinaco from './Components/Tinaco';
-import Ph from './Components/Ph';
-import Turbidez from './Components/Turbidez';
+import Conexion from './Components/Conexion';
 
 function App() {
   return (
     <Router>
       <div className='body'>
         <Header />
-
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/tinaco" element={<Tinaco />} />
-          <Route path="/ph" element={<Ph />} />
-          <Route path="/turbidez" element={<Turbidez />} />
+          <Route path="/tinaco" element={<Conexion type="Tinaco" />} />
+          <Route path="/ph" element={<Conexion type="Ph" />} />
+          <Route path="/turbidez" element={<Conexion type="Turbidez" />} />
         </Routes>
-
         <Footer />
       </div>
     </Router>
@@ -29,3 +25,4 @@ function App() {
 }
 
 export default App;
+

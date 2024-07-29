@@ -1,59 +1,67 @@
-// import './Enc.css';
+// src/Components/Conexion.js
 import { useState, useEffect } from 'react';
-import Header from './Header';
-import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { collection,getDocs } from "firebase/firestore";
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyDd9VdJxXER-u4YLFFfyWJ8EutvTDOWuJU",
-    authDomain: "cisterlink.firebaseapp.com",
-    databaseURL: "https://cisterlink-default-rtdb.firebaseio.com",
-    projectId: "cisterlink",
-    storageBucket: "cisterlink.appspot.com",
-    messagingSenderId: "672465650769",
-    appId: "1:672465650769:web:0ea1bcf1de59ddf41f2470",
-    measurementId: "G-2ZK3JCZ4HZ"
-  };
-  
+  apiKey: "AIzaSyDd9VdJxXER-u4YLFFfyWJ8EutvTDOWuJU",
+  authDomain: "cisterlink.firebaseapp.com",
+  databaseURL: "https://cisterlink-default-rtdb.firebaseio.com",
+  projectId: "cisterlink",
+  storageBucket: "cisterlink.appspot.com",
+  messagingSenderId: "672465650769",
+  appId: "1:672465650769:web:0ea1bcf1de59ddf41f2470",
+  measurementId: "G-2ZK3JCZ4HZ"
+};
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-function Main() {
-
-  const [valor, setValor] = useState("");
-  const [tinacos, setTinaco] = useState([]);
+function Conexion({ type }) {
+  const [data, setData] = useState([]);
   const db = getFirestore(app);
-  async function Leer(){
+
+  async function fetchData() {
     try {
       const querySnapshot = await getDocs(collection(db, "Tinaco"));
-      const data = querySnapshot.docs.map((doc) => doc.data());
-      setTinaco(data);
+      const fetchedData = querySnapshot.docs.map((doc) => {
+        const docData = doc.data();
+        switch (type) {
+          case 'Tinaco':
+            return { Llenado: docData.Llenado };
+          case 'Ph':
+            return { Ph: docData.Ph };
+          case 'Turbidez':
+            return { Calidad: docData.Calidad };
+          default:
+            return docData;
+        }
+      });
+      setData(fetchedData);
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error fetching data: ", e);
     }
-  };
+  }
 
   useEffect(() => {
-    Leer();
-  }, []);
+    fetchData();
+  }, [type]);
+
   return (
     <div className="main">
-        <div>
-          <h2>TINACO</h2>
-          <ul>
-            {tinacos.map((tinaco, index) => (
-              <li key={index}>Calidad: {tinaco.Calidad} Llenado {tinaco.Llenado}%  PH: {tinaco.Ph}</li>
-            ))}
-          </ul>
-        </div>
+      <div>
+        <h2>{type.toUpperCase()}</h2>
+        <ul>
+          {data.map((item, index) => (
+            <li key={index}>
+              {Object.entries(item).map(([key, value]) => (
+                <span key={key}>{key}: {value} </span>
+              ))}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
+
+export default Conexion;

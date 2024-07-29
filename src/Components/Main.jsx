@@ -15,7 +15,7 @@ const Card = ({ image, title }) => {
   );
 };
 
-function Main() {
+const Main = () => {
   const cardsData = [
     {
       image: tinaco,
