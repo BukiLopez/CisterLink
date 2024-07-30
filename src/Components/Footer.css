@@ -5,9 +5,9 @@
     text-align: center;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
-    position: relative;
+    position: fixed;
     bottom: 0;
-    margin-top: 401px;
+    left: 0;
 }
 
 .footer .social-icons {
