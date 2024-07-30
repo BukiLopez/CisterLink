@@ -18,7 +18,7 @@ function App() {
           <Route path="/ph" element={<Conexion type="Ph" />} />
           <Route path="/turbidez" element={<Conexion type="Turbidez" />} />
         </Routes>
-        <Footer />
+        <Footer></Footer>
       </div>
     </Router>
   );
