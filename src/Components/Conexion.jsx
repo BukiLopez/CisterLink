@@ -13,7 +13,7 @@ ChartJS.register(
   Legend
 );
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyDd9VdJxXER-u4YLFFfyWJ8EutvTDOWuJU",
   authDomain: "cisterlink.firebaseapp.com",
   databaseURL: "https://cisterlink-default-rtdb.firebaseio.com",
