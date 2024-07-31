@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyDd9VdJxXER-u4YLFFfyWJ8EutvTDOWuJU",
   authDomain: "cisterlink.firebaseapp.com",
   databaseURL: "https://cisterlink-default-rtdb.firebaseio.com",
