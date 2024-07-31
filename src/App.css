@@ -1,3 +1,4 @@
+/* App.css */
 html,
 body {
   margin: 0;
@@ -5,26 +6,21 @@ body {
   height: 100%;
 }
 
-.app-container {
+.body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-}
-
-header {
-  background: #333;
-  color: white;
-  padding: 1rem;
+  min-height: 100vh; /* Asegura que el contenedor principal ocupe al menos el 100% de la altura de la ventana */
 }
 
 main {
-  flex: 1;
-  padding: 1rem;
+  flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
 }
 
 footer {
-  background: #333;
+  background: linear-gradient(to right, #43cea2, #185a9d);
   color: white;
-  padding: 1rem;
+  padding: 20px 0;
   text-align: center;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
