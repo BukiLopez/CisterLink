@@ -11,14 +11,12 @@ function App() {
     <Router>
       <div className='body'>
         <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/tinaco" element={<Conexion type="Tinaco" />} />
-            <Route path="/ph" element={<Conexion type="Ph" />} />
-            <Route path="/turbidez" element={<Conexion type="Turbidez" />} />
-          </Routes>
-        </main>
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/tinaco" element={<Conexion type="Tinaco" />} />
+          <Route path="/ph" element={<Conexion type="Ph" />} />
+          <Route path="/turbidez" element={<Conexion type="Turbidez" />} />
+        </Routes>
         <Footer />
       </div>
     </Router>
